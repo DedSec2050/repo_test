@@ -7,8 +7,17 @@ block content %}
       <h1 class="display-4">Welcome to Todo App</h1>
       <p class="lead">
         Organize your tasks efficiently with our simple and elegant todo
-        application.
+        application powered by MongoDB.
       </p>
+
+      {% if db_status %}
+      <div
+        class="alert alert-{{ 'success' if db_connected else 'warning' }} d-inline-block"
+      >
+        <i class="fas fa-database me-2"></i>{{ db_status }}
+      </div>
+      {% endif %}
+
       <hr class="my-4" />
       <p>
         Get started by creating your first todo item or explore the existing
