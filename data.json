@@ -2,14 +2,14 @@
   "users": [
     {
       "id": 1,
-      "name": "John Doe",
+      "name": "John Test",
       "email": "john.doe@example.com",
       "age": 30,
       "city": "New York"
     },
     {
       "id": 2,
-      "name": "Jane Smith",
+      "name": "Jane Spearow",
       "email": "jane.smith@example.com",
       "age": 25,
       "city": "Los Angeles"
@@ -25,7 +25,7 @@
   "products": [
     {
       "id": 101,
-      "name": "Laptop",
+      "name": "Macbook",
       "price": 999.99,
       "category": "Electronics",
       "in_stock": true
