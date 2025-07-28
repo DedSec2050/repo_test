@@ -1,0 +1,54 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "John Doe",
+      "email": "john.doe@example.com",
+      "age": 30,
+      "city": "New York"
+    },
+    {
+      "id": 2,
+      "name": "Jane Smith",
+      "email": "jane.smith@example.com",
+      "age": 25,
+      "city": "Los Angeles"
+    },
+    {
+      "id": 3,
+      "name": "Bob Johnson",
+      "email": "bob.johnson@example.com",
+      "age": 35,
+      "city": "Chicago"
+    }
+  ],
+  "products": [
+    {
+      "id": 101,
+      "name": "Laptop",
+      "price": 999.99,
+      "category": "Electronics",
+      "in_stock": true
+    },
+    {
+      "id": 102,
+      "name": "Smartphone",
+      "price": 699.99,
+      "category": "Electronics",
+      "in_stock": true
+    },
+    {
+      "id": 103,
+      "name": "Coffee Mug",
+      "price": 12.99,
+      "category": "Home",
+      "in_stock": false
+    }
+  ],
+  "metadata": {
+    "version": "1.0",
+    "last_updated": "2025-07-27",
+    "total_users": 3,
+    "total_products": 3
+  }
+}
