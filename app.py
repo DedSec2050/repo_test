@@ -31,7 +31,7 @@ db_connected = False
 def connect_to_mongodb():
     """Initialize MongoDB connection"""
     global mongo_client, db, collection, db_connected
-    print("Connecting to MongoDB Atlas...")
+    print("Connecting to MongoDB Atlas... ")
     logger.info("Connecting to MongoDB Atlas...")
     logger.info(f"mongo_uri: {MONGO_URI}")
     logger.info(f"database_name: {DATABASE_NAME}")
