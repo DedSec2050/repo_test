@@ -45,6 +45,29 @@
       "in_stock": false
     }
   ],
+  "todos": [
+    {
+      "id": 1,
+      "name": "Sample Todo Item",
+      "description": "This is a sample todo item to demonstrate the functionality",
+      "completed": false,
+      "created_at": "2025-07-28 10:00:00"
+    },
+    {
+      "id": 2,
+      "name": "Complete Project Documentation",
+      "description": "Write comprehensive documentation for the todo application",
+      "completed": true,
+      "created_at": "2025-07-28 09:30:00"
+    },
+    {
+      "id": 3,
+      "name": "testname",
+      "description": "test desc",
+      "completed": false,
+      "created_at": "2025-07-28 10:14:27"
+    }
+  ],
   "metadata": {
     "version": "1.0",
     "last_updated": "2025-07-27",

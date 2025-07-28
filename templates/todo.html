@@ -1,0 +1,178 @@
+{% extends "base.html" %} {% block title %}Todo List - Todo App{% endblock %} {%
+block content %}
+<div class="row">
+  <div class="col-lg-8 mx-auto">
+    <div class="card">
+      <div class="card-header bg-primary text-white">
+        <h2 class="mb-0">
+          <i class="fas fa-plus-circle me-2"></i>Add New Todo Item
+        </h2>
+      </div>
+      <div class="card-body">
+        <form method="POST" action="{{ url_for('api.add_todo') }}">
+          <div class="mb-3">
+            <label for="item_name" class="form-label">
+              <i class="fas fa-tag me-1"></i>Item Name
+            </label>
+            <input
+              type="text"
+              class="form-control"
+              id="item_name"
+              name="item_name"
+              placeholder="Enter todo item name..."
+              required
+            />
+          </div>
+
+          <div class="mb-3">
+            <label for="item_description" class="form-label">
+              <i class="fas fa-align-left me-1"></i>Item Description
+            </label>
+            <textarea
+              class="form-control"
+              id="item_description"
+              name="item_description"
+              rows="3"
+              placeholder="Enter item description..."
+              required
+            ></textarea>
+          </div>
+
+          <div class="d-grid">
+            <button type="submit" class="btn btn-primary btn-lg">
+              <i class="fas fa-plus me-2"></i>Add Todo Item
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Todo Items List -->
+    <div class="card mt-4">
+      <div class="card-header bg-secondary text-white">
+        <h3 class="mb-0">
+          <i class="fas fa-list me-2"></i>Todo Items
+          <span class="badge bg-light text-dark ms-2">{{ todos|length }}</span>
+        </h3>
+      </div>
+      <div class="card-body">
+        {% if todos %}
+        <div class="row">
+          {% for todo in todos %}
+          <div class="col-md-6 mb-3">
+            <div
+              class="card todo-item h-100 {% if todo.completed %}border-success{% else %}border-warning{% endif %}"
+            >
+              <div class="card-body">
+                <div
+                  class="d-flex justify-content-between align-items-start mb-2"
+                >
+                  <h5
+                    class="card-title mb-0 {% if todo.completed %}text-decoration-line-through text-muted{% endif %}"
+                  >
+                    <i
+                      class="fas fa-{% if todo.completed %}check-circle text-success{% else %}clock text-warning{% endif %} me-2"
+                    ></i>
+                    {{ todo.name }}
+                  </h5>
+                  <span
+                    class="badge {% if todo.completed %}bg-success{% else %}bg-warning{% endif %}"
+                  >
+                    {{ 'Completed' if todo.completed else 'Pending' }}
+                  </span>
+                </div>
+                <p
+                  class="card-text {% if todo.completed %}text-muted{% endif %}"
+                >
+                  {{ todo.description }}
+                </p>
+                <small class="text-muted">
+                  <i class="fas fa-calendar me-1"></i>
+                  Created: {{ todo.created_at }}
+                </small>
+
+                <div class="mt-3">
+                  {% if not todo.completed %}
+                  <form
+                    method="POST"
+                    action="{{ url_for('api.toggle_todo', todo_id=todo.id) }}"
+                    class="d-inline"
+                  >
+                    <button type="submit" class="btn btn-success btn-sm">
+                      <i class="fas fa-check me-1"></i>Mark Complete
+                    </button>
+                  </form>
+                  {% endif %}
+
+                  <form
+                    method="POST"
+                    action="{{ url_for('api.delete_todo', todo_id=todo.id) }}"
+                    class="d-inline"
+                  >
+                    <button
+                      type="submit"
+                      class="btn btn-danger btn-sm"
+                      onclick="return confirm('Are you sure you want to delete this todo item?')"
+                    >
+                      <i class="fas fa-trash me-1"></i>Delete
+                    </button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+
+        <!-- Statistics -->
+        <div class="row mt-4">
+          <div class="col-md-4">
+            <div class="card bg-primary text-white">
+              <div class="card-body text-center">
+                <h4>{{ todos|length }}</h4>
+                <p class="mb-0">Total Items</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card bg-success text-white">
+              <div class="card-body text-center">
+                <h4>{{ todos|selectattr('completed')|list|length }}</h4>
+                <p class="mb-0">Completed</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card bg-warning text-white">
+              <div class="card-body text-center">
+                <h4>{{ todos|rejectattr('completed')|list|length }}</h4>
+                <p class="mb-0">Pending</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% else %}
+        <div class="text-center py-5">
+          <i class="fas fa-inbox fa-4x text-muted mb-3"></i>
+          <h4 class="text-muted">No todo items yet</h4>
+          <p class="text-muted">
+            Create your first todo item using the form above!
+          </p>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %} {% block scripts %}
+<script>
+  // Auto-hide alerts after 5 seconds
+  setTimeout(function () {
+    var alerts = document.querySelectorAll(".alert");
+    alerts.forEach(function (alert) {
+      var bsAlert = new bootstrap.Alert(alert);
+      bsAlert.close();
+    });
+  }, 5000);
+</script>
+{% endblock %}

@@ -1,0 +1,70 @@
+{% extends "base.html" %} {% block title %}Home - Todo App{% endblock %} {%
+block content %}
+<div class="row">
+  <div class="col-lg-8 mx-auto">
+    <div class="jumbotron bg-white p-5 rounded-3 text-center">
+      <i class="fas fa-tasks fa-4x text-primary mb-4"></i>
+      <h1 class="display-4">Welcome to Todo App</h1>
+      <p class="lead">
+        Organize your tasks efficiently with our simple and elegant todo
+        application.
+      </p>
+      <hr class="my-4" />
+      <p>
+        Get started by creating your first todo item or explore the existing
+        features.
+      </p>
+      <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+        <a
+          class="btn btn-primary btn-lg me-md-2"
+          href="{{ url_for('api.todo_page') }}"
+        >
+          <i class="fas fa-plus me-2"></i>Create Todo
+        </a>
+        <a
+          class="btn btn-outline-secondary btn-lg"
+          href="{{ url_for('api.get_data') }}"
+        >
+          <i class="fas fa-database me-2"></i>View API Data
+        </a>
+      </div>
+    </div>
+
+    <div class="row mt-5">
+      <div class="col-md-4">
+        <div class="card h-100">
+          <div class="card-body text-center">
+            <i class="fas fa-plus-circle fa-3x text-primary mb-3"></i>
+            <h5 class="card-title">Add Tasks</h5>
+            <p class="card-text">
+              Easily add new todo items with names and descriptions.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card h-100">
+          <div class="card-body text-center">
+            <i class="fas fa-check-circle fa-3x text-success mb-3"></i>
+            <h5 class="card-title">Track Progress</h5>
+            <p class="card-text">
+              Mark tasks as complete and track your productivity.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card h-100">
+          <div class="card-body text-center">
+            <i class="fas fa-mobile-alt fa-3x text-info mb-3"></i>
+            <h5 class="card-title">Responsive Design</h5>
+            <p class="card-text">
+              Access your todos from any device with our responsive interface.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
